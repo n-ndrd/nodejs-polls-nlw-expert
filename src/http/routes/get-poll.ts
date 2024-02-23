@@ -26,7 +26,7 @@ export async function getPoll(app: FastifyInstance) {
         })
 
         if(!poll) {
-            return res.status(400).send({ message: 'Poll not foud.' })
+            return res.status(400).send({ message: 'Poll not found.' })
         }
 
         const result = await redis.zrange(pollId, 0, -1, 'WITHSCORES')
@@ -36,7 +36,7 @@ export async function getPoll(app: FastifyInstance) {
                 const score = result[index + 1]
 
                 Object.assign(obj, { [line]: Number(score) })
-            }
+            } 
 
             return obj
         }, {} as Record<string, number>)
@@ -49,7 +49,7 @@ export async function getPoll(app: FastifyInstance) {
                     return {
                         id: option.id,
                         title: option.title,
-                        score: (option.id in votes) ? votes[option.id]: 0
+                        score: (option.id in votes) ? votes[option.id]: 0,
                     }
                 })
             }
