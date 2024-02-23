@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@prisma/client": "^5.10.1",
     "@types/node": "^20.11.17",
     "i": "^0.3.7",
